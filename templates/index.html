@@ -14,7 +14,9 @@
             id: 'name',
             name: 'name',
             autofocus: true,
-            required: true
+            required: true,
+            value: (card is defined ? card.name : null),
+            errors: (card is defined ? card.getErrors('name') : null)
         }) }}
 
         {{ forms.textField({
@@ -23,7 +25,9 @@
             id: 'number',
             name: 'number',
             required: true,
-            size: 25
+            size: 25,
+            value: (card is defined ? card.number : null),
+            errors: (card is defined ? card.getErrors('number') : null)
         }) }}
 
         {{ forms.selectField({
@@ -32,7 +36,9 @@
             id: 'type',
             name: 'type',
             required: true,
-            options: {'mastercard': 'MasterCard', 'visa': 'Visa', 'amex': 'American Express'}
+            options: {'mastercard': 'MasterCard', 'visa': 'Visa', 'amex': 'American Express'},
+            value: (card is defined ? card.type : null),
+            errors: (card is defined ? card.getErrors('type') : null)
         }) }}
 
         {{ forms.textField({
@@ -41,7 +47,9 @@
             id: 'expiryMonth',
             name: 'expiryMonth',
             required: true,
-            size: 2
+            size: 2,
+            value: (card is defined ? card.expiryMonth : null),
+            errors: (card is defined ? card.getErrors('expiryMonth') : null)
         }) }}
 
         {{ forms.textField({
@@ -50,7 +58,9 @@
             id: 'expiryYear',
             name: 'expiryYear',
             required: true,
-            size: 2
+            size: 2,
+            value: (card is defined ? card.expiryYear : null),
+            errors: (card is defined ? card.getErrors('expiryYear') : null)
         }) }}
 
         {{ forms.textField({
@@ -59,7 +69,9 @@
             id: 'cvv',
             name: 'cvv',
             required: true,
-            size: 3
+            size: 3,
+            value: (card is defined ? card.cvv : null),
+            errors: (card is defined ? card.getErrors('cvv') : null)
         }) }}
 
         <div class="buttons">
