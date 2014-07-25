@@ -9,11 +9,7 @@ class CreditCard_NumberValidator extends CValidator
         $number = $object->$attribute;
 
         if ($number && ! $this->validateLuhn($number)) {
-            $message = Craft::t(
-                '"{object}->{attribute}" must be a valid credit card number.',
-                ['object' => get_class($object), 'attribute' => $attribute]
-            );
-
+            $message = Craft::t('Invalid credit card number.');
             $this->addError($object, $attribute, $message);
         }
     }
