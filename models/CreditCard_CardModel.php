@@ -32,9 +32,9 @@ class CreditCard_CardModel extends BaseModel
                 'min'      => $currentYear,
             ],
             'cvv' => [
-                'type'     => AttributeType::String,
-                'required' => true,
-                'pattern'  => '/^[0-9]{2,3}$/',
+                'type'         => AttributeType::String,
+                'required'     => true,
+                'matchPattern' => '/^[0-9]{2,3}$/',
             ],
         ];
     }
