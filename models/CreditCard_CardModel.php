@@ -12,7 +12,7 @@ class CreditCard_CardModel extends BaseModel
                 'required' => true,
             ],
             'number' => [
-                'type'     => AttributeType::Number,
+                'type'     => AttributeType::String,
                 'required' => true,
             ],
             'type' => [
