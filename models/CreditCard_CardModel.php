@@ -1,6 +1,6 @@
 <?php namespace Craft;
 
-class CreditCart_CardModel extends BaseModel
+class CreditCard_CardModel extends BaseModel
 {
     protected function defineAttributes()
     {
