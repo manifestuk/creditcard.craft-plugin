@@ -9,11 +9,19 @@
 
         {{ forms.textField({
             first: true,
+            label: "Name"|t,
+            instructions: "The card holder's name, as it appears on the front of the card."|t,
+            id: 'name',
+            name: 'name',
+            autofocus: true,
+            required: true
+        }) }}
+
+        {{ forms.textField({
             label: "Card Number"|t,
             instructions: "The long number on the front of the credit card."|t,
             id: 'number',
             name: 'number',
-            autofocus: true,
             required: true,
             size: 25
         }) }}
