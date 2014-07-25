@@ -1,0 +1,61 @@
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+{% set title = "Credit Card"|t %}
+
+{% set content %}
+    <form method="post" action="" accept-charset="UTF-8" data-saveshortcut="1">
+        <input type="hidden" name="action" value="creditCard/card/validate">
+
+        {{ forms.textField({
+            first: true,
+            label: "Card Number"|t,
+            instructions: "The long number on the front of the credit card."|t,
+            id: 'number',
+            name: 'number',
+            autofocus: true,
+            required: true,
+            size: 25
+        }) }}
+
+        {{ forms.selectField({
+            label: "Card Type"|t,
+            instructions: "The credit card type."|t,
+            id: 'type',
+            name: 'type',
+            required: true,
+            options: {'mastercard': 'MasterCard', 'visa': 'Visa', 'amex': 'American Express'}
+        }) }}
+
+        {{ forms.textField({
+            label: "Expiration Month"|t,
+            instructions: "The month on which the card expires."|t,
+            id: 'month',
+            name: 'month',
+            required: true,
+            size: 2
+        }) }}
+
+        {{ forms.textField({
+            label: "Expiration Year"|t,
+            instructions: "The year on which the card expires."|t,
+            id: 'year',
+            name: 'year',
+            required: true,
+            size: 2
+        }) }}
+
+        {{ forms.textField({
+            label: "CVV"|t,
+            instructions: "The 3-digit number on the back of MasterCard or Visa credit cards, or the 4-digit number on the front of AMEX cards."|t,
+            id: 'cvv',
+            name: 'cvv',
+            required: true,
+            size: 3
+        }) }}
+
+        <div class="buttons">
+            <input type="submit" class="btn submit" value="{{ 'Validate'|t }}">
+        </div>
+    </form>
+{% endset %}
