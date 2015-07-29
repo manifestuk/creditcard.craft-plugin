@@ -1,0 +1,81 @@
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+{% set title = "Credit Card"|t %}
+
+{% set content %}
+    <form method="post" action="" accept-charset="UTF-8" data-saveshortcut="1">
+        <input type="hidden" name="action" value="creditCard/card/validate">
+
+        {{ forms.textField({
+            first: true,
+            label: "Name"|t,
+            instructions: "The card holder's name, as it appears on the front of the card."|t,
+            id: 'name',
+            name: 'name',
+            autofocus: true,
+            required: true,
+            value: (card is defined ? card.name : null),
+            errors: (card is defined ? card.getErrors('name') : null)
+        }) }}
+
+        {{ forms.textField({
+            label: "Card Number"|t,
+            instructions: "The long number on the front of the credit card."|t,
+            id: 'number',
+            name: 'number',
+            required: true,
+            size: 25,
+            value: (card is defined ? card.number : null),
+            errors: (card is defined ? card.getErrors('number') : null)
+        }) }}
+
+        {{ forms.selectField({
+            label: "Card Type"|t,
+            instructions: "The credit card type."|t,
+            id: 'type',
+            name: 'type',
+            required: true,
+            options: {'mastercard': 'MasterCard', 'visa': 'Visa', 'amex': 'American Express'},
+            value: (card is defined ? card.type : null),
+            errors: (card is defined ? card.getErrors('type') : null)
+        }) }}
+
+        {{ forms.textField({
+            label: "Expiration Month"|t,
+            instructions: "The month on which the card expires."|t,
+            id: 'expiryMonth',
+            name: 'expiryMonth',
+            required: true,
+            size: 2,
+            value: (card is defined ? card.expiryMonth : null),
+            errors: (card is defined ? card.getErrors('expiryMonth') : null)
+        }) }}
+
+        {{ forms.textField({
+            label: "Expiration Year"|t,
+            instructions: "The year on which the card expires."|t,
+            id: 'expiryYear',
+            name: 'expiryYear',
+            required: true,
+            size: 2,
+            value: (card is defined ? card.expiryYear : null),
+            errors: (card is defined ? card.getErrors('expiryYear') : null)
+        }) }}
+
+        {{ forms.textField({
+            label: "CVV"|t,
+            instructions: "The 3-digit number on the back of MasterCard or Visa credit cards, or the 4-digit number on the front of AMEX cards."|t,
+            id: 'cvv',
+            name: 'cvv',
+            required: true,
+            size: 3,
+            value: (card is defined ? card.cvv : null),
+            errors: (card is defined ? card.getErrors('cvv') : null)
+        }) }}
+
+        <div class="buttons">
+            <input type="submit" class="btn submit" value="{{ 'Validate'|t }}">
+        </div>
+    </form>
+{% endset %}
